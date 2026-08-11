@@ -1,0 +1,53 @@
+name: Compilar .exe y publicar release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "fondos_mutuos_gui.py"
+      - "requirements.txt"
+      - "Logo.png"
+      - "packaging/**"
+      - ".github/workflows/build-exe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Generar icono circular desde Logo.png
+        run: python packaging/generar_icono.py
+
+      - name: Compilar con PyInstaller
+        run: >
+          pyinstaller --onefile --windowed --clean --noconfirm --noupx
+          --name "Fondos Mutuos CMF"
+          --icon app.ico
+          --version-file packaging/version_info.txt
+          --add-data "Logo.png;."
+          --collect-all selenium
+          --exclude-module matplotlib --exclude-module pytest --exclude-module IPython
+          fondos_mutuos_gui.py
+
+      - name: Publicar release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Fondos Mutuos CMF
+          make_latest: true
+          files: dist/Fondos Mutuos CMF.exe

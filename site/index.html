@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descargador de Fondos Mutuos CMF</title>
+<style>
+  :root {
+    --bg: #E8EDF3;
+    --card: #F7F9FC;
+    --accion-bg: #3D6C9C;
+    --accion-texto: #FFFFFF;
+    --boton-bg: #C3D2E3;
+    --boton-texto: #1F3247;
+    --texto: #1E232A;
+    --texto-secundario: #5A6470;
+    --sombra-oscura: #c3cdd9;
+    --sombra-clara: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .tarjeta {
+    background: var(--card);
+    border-radius: 28px;
+    box-shadow: 12px 12px 28px var(--sombra-oscura), -12px -12px 28px var(--sombra-clara);
+    max-width: 640px;
+    width: 100%;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 6px 6px 16px var(--sombra-oscura), -6px -6px 16px var(--sombra-clara);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 26px;
+    margin: 0 0 8px;
+  }
+  .version {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    margin: 0 0 24px;
+  }
+  p.descripcion {
+    color: var(--texto-secundario);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .botones {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  a.boton {
+    display: block;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 18px 24px;
+    border-radius: 16px;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  a.boton:active { transform: translateY(1px); }
+  a.boton.principal {
+    background: var(--accion-bg);
+    color: var(--accion-texto);
+    box-shadow: 6px 6px 14px var(--sombra-oscura), -6px -6px 14px var(--sombra-clara);
+  }
+  a.boton.principal:hover {
+    box-shadow: 8px 8px 18px var(--sombra-oscura), -8px -8px 18px var(--sombra-clara);
+  }
+  a.boton.secundario {
+    background: var(--boton-bg);
+    color: var(--boton-texto);
+    box-shadow: 6px 6px 14px var(--sombra-oscura), -6px -6px 14px var(--sombra-clara);
+  }
+  a.boton.secundario:hover {
+    box-shadow: 8px 8px 18px var(--sombra-oscura), -8px -8px 18px var(--sombra-clara);
+  }
+  .requisitos {
+    text-align: left;
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 18px 22px;
+    font-size: 14px;
+    color: var(--texto-secundario);
+    line-height: 1.7;
+  }
+  .requisitos strong { color: var(--texto); }
+  footer {
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--texto-secundario);
+  }
+  footer a { color: var(--accion-bg); text-decoration: none; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1B222C;
+      --card: #232B37;
+      --accion-bg: #5A8FC4;
+      --accion-texto: #0E1116;
+      --boton-bg: #2E3B4B;
+      --boton-texto: #DCE6F2;
+      --texto: #E7ECF2;
+      --texto-secundario: #9AA6B4;
+      --sombra-oscura: #141920;
+      --sombra-clara: #2B3543;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="tarjeta">
+    <img class="logo" src="Logo.png" alt="Logo de la aplicación">
+    <h1>Descargador de Fondos Mutuos CMF</h1>
+    <p class="version">Versión 1.0</p>
+    <p class="descripcion">
+      Descarga la cartola diaria de fondos mutuos publicada por la CMF Chile,
+      la organiza en una tabla filtrable y la exporta a Excel.
+    </p>
+
+    <div class="botones">
+      <a class="boton principal"
+         href="https://github.com/Rektres/FondosMutuos/releases/latest/download/Fondos%20Mutuos%20CMF.exe">
+        ⬇ Descargar la aplicación (.exe)
+      </a>
+      <a class="boton secundario" href="Manual_de_Usuario.pdf">
+        📘 Descargar el manual de usuario (PDF)
+      </a>
+    </div>
+
+    <div class="requisitos">
+      <strong>Requisitos:</strong> Windows y Google Chrome instalado (la CMF exige
+      resolver un captcha, así que la app abre un Chrome real para eso).
+      No necesita instalación ni conexión a internet salvo al descargar datos.
+    </div>
+
+    <footer>
+      Desarrollado por Mateo Araneda Medina ·
+      <a href="https://www.linkedin.com/in/mateo-a-6388a7219/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/Rektres/FondosMutuos" target="_blank" rel="noopener">Código en GitHub</a>
+    </footer>
+  </main>
+</body>
+</html>

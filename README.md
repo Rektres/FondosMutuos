@@ -29,6 +29,12 @@ venv\Scripts\python fondos_mutuos_gui.py
 5. **Plantilla**: exporta o carga la selección de fondos desde un archivo Excel, para compartir la misma configuración entre equipos.
 6. **Exportar Excel**: genera un `.xlsx` agrupado por entidad con las columnas Fecha, N° Fondo, Nombre Fondo, Serie y Valor Cuota.
 
+## Landing page y descargas
+
+`site/` contiene la landing page (GitHub Pages, desplegada por `.github/workflows/pages.yml`)
+con botones para descargar el manual de usuario y el `.exe` compilado. El `.exe` se genera y
+publica como GitHub Release por `.github/workflows/build-exe.yml` en cada cambio al código.
+
 ## Generar un ejecutable (opcional)
 
 ```bash
